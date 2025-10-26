@@ -47,3 +47,31 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# ============================================================================
+# Kelly Criterion Project - Custom Rules
+# ============================================================================
+
+# Allow ticker list to be committed (small file, important for reproducibility)
+!data/raw/stoxx50_tickers.csv
+
+# Exclude large data files
+data/raw/*.rds
+data/processed/*.rds
+data/**/*.rds
+
+# Exclude output files (can be regenerated)
+output/figures/*.pdf
+output/figures/*.png
+output/tables/*.csv
+output/reports/*.pdf
+output/reports/*.html
+
+# Keep .gitkeep files
+!.gitkeep
+!**/.gitkeep
+
+# Exclude large datasets
+*.zip
+*.tar.gz
+data/raw/*.parquet
