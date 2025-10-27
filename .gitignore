@@ -53,12 +53,16 @@ rsconnect/
 # ============================================================================
 
 # Allow ticker list to be committed (small file, important for reproducibility)
+*.csv
 !data/raw/stoxx50_tickers.csv
+output/tables/*.csv
 
-# Exclude large data files
+# Large data files - DO NOT COMMIT
+data/raw/*.csv
+data/processed/*.csv
+*.rds
 data/raw/*.rds
 data/processed/*.rds
-data/**/*.rds
 
 # Exclude output files (can be regenerated)
 output/figures/*.pdf
