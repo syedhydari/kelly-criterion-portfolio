@@ -126,6 +126,73 @@ Where:
 | 6 | Dec 2 - Dec 8 | Analysis & Draft Report |
 | 7 | Dec 9 - Dec 15 | Final Submission & Presentation |
 
+## Checklist
+A structured checklist for reproducing and extending the methodology, experiments, and results described in *"Practical Implementation of the Kelly Criterion."*  
+
+---
+
+### Methods
+
+- [x] Optimization Methods
+  - [x] Implement **Kelly Criterion theory**: continuous-time Kelly approximation Function (Anlytical)
+  - [x] Implement **Modern Portfolio Theory**: Min-Variance/Markovitz (Anlytical)
+  - [x] Implement **Equal Weights Calculation**
+  - [ ] Implement **Tangent Portfolio Opt**
+- [x] Add **fractional Kelly scaling** parameter (e.g., ½-Kelly, ⅓-Kelly)
+- [ ] Implement **simulation of GBM returns** for synthetic tests
+- [x] Prepare **data ingestion** for EuroStoxx50 historical returns
+- [x] Compute **risk metrics** (CAGR, volatility, drawdown, Sharpe, Sortino)
+
+---
+
+### Experiments
+
+- [ ] **Monte-Carlo simulations**
+  - [ ] Simulate 100, 1,000, 10,000, 40,000 trades
+  - [ ] Compare Half, Full, Double, and Triple Kelly
+  - [ ] Compute mean, median, std, and ruin probabilities
+  - [ ] Plot \( E[\log W_T] \) over time
+- [ ] **Single-equity study**
+  - [ ] Use daily returns of one stock (e.g., Banca Intesa)
+  - [ ] Backtest Full, Double, Triple, Fractional Kelly
+- [ ] **Portfolio experiments**
+  - [ ] Construct in-sample constrained Kelly portfolio (Figure 5)
+  - [ ] Compare with tangent, min-variance, and equal-weight portfolios
+  - [ ] Perform **rolling (out-of-sample)** tests with:
+    - [x] 24 lookback windows
+    - [ ] Multiple lookback windows (e.g., 24, 36, 60, 108 months)
+    - [ ] Multiple rebalancing frequencies (daily, weekly, monthly)
+- [x] Record all metrics in tabular format (mean, median, CAGR, drawdown)
+
+---
+
+### Results
+
+- [ ] Plot **growth rate vs bet fraction** (G(f)) curve
+- [ ] Visualize **log-wealth distributions** across Kelly multiples
+- [ ] Plot **cumulative returns** for single-asset strategies
+- [ ] Plot **cumulative returns** for In-Sample constrained Kelly
+- [x] Plot **cumulative returns** for Rolling backtest
+- [ ] Draw **efficient frontier** with Kelly, tangent, and benchmark portfolios
+- [ ] Chart **rolling portfolio performance** over time
+- [ ] Summarize all results in tables:
+  - [ ] Monte-Carlo statistics
+  - [ ] Single-asset performance metrics
+  - [ ] In-sample vs out-of-sample portfolio metrics
+  - [ ] Sensitivity analysis (lookback × rebalancing)
+- [ ] Interpret:
+  - [ ] Kelly asymptotic optimality
+  - [ ] Over-betting risk and ruin probability
+  - [ ] Portfolio concentration effects
+  - [ ] Impact of window length and rebalancing frequency
+
+---
+
+### Extensions & Future Work
+
+- [ ] Pending
+
+
 ## Repository Structure
 
 ### Code Files
@@ -133,8 +200,12 @@ Where:
 - `01_data/01_download_data.R` - Download price data
 - `01_data/02_clean_data.R` - Data quality checks and cleaning
 - `01_data/03_calculate_returns.R` - Compute log returns
-- `02_optimization/kelly_optimization.R` - Kelly portfolio optimization
-- `02_optimization/mv_optimization.R` - Mean-variance optimization
+- `02_model/01_returns_calculation.R` - Calculate Returns
+- `02_model/02_optimization_functions.R` - Optimization Methods
+- `02_model/03_rolling_backtest.R` - Rolling Backtest 
+- `02_model/04_vizualization.R` - Visualization Functions
+- `02_model/main.R` - Main file Reproducing Results
+
 
 ### Output Files
 - `output/figures/` - Performance plots, drawdown charts
