@@ -78,4 +78,4 @@ output/reports/*.html
 # Exclude large datasets
 *.zip
 *.tar.gz
-data/raw/*.parquet
+data/raw/*.parquetkelly-criterion-portfolio/
