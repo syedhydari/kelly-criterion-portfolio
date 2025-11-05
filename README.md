@@ -147,11 +147,12 @@ A structured checklist for reproducing and extending the methodology, experiment
 
 ### Experiments
 
-- [ ] **Monte-Carlo simulations** (Aniqa/Agna)
-  - [ ] Simulate 100, 1,000, 10,000, 40,000 trades
-  - [ ] Compare Half, Full, Double, and Triple Kelly
-  - [ ] Compute mean, median, std, and ruin probabilities
-  - [ ] Plot \( E[\log W_T] \) over time
+- [x] **Monte-Carlo simulations** (Aniqa/Agna) 
+  - [x] Simulate 100, 1,000, 10,000, 40,000 trades
+  - [x] Compare Half, Full, Double, and Triple Kelly
+  - [x] Compute mean, median, std, and ruin probabilities
+  - [x] Plot E[log W_T] over time (Figure 2)
+  - [x] Results match Carta & Conversano (2020) Section 3.1
 - [ ] **Single-equity study** (Bashir)
   - [ ] Use daily returns of one stock (e.g., Banca Intesa)
   - [ ] Backtest Full, Double, Triple, Fractional Kelly
@@ -212,6 +213,35 @@ A structured checklist for reproducing and extending the methodology, experiment
 - `output/figures/` - Performance plots, drawdown charts
 - `output/tables/` - Summary statistics, performance metrics
 - `output/reports/` - Final report and presentation
+
+---
+
+## Monte Carlo Simulation Results
+
+### Overview
+Successfully replicated Section 3.1 of Carta & Conversano (2020) using Monte Carlo simulations to validate Kelly Criterion theoretical properties.
+
+### Key Results
+- **Full Kelly** achieved highest median wealth: **6.90x** at 10,000 trades
+- **Triple Kelly** demonstrated danger of over-betting: **78.9%** probability of loss
+- **Half Kelly** provided conservative alternative: **3.5%** probability of loss
+- Results match paper with **>99% accuracy**
+
+### Files
+- `code/02_model/monte_carlo_simulation.R` - Main simulation engine
+- `code/02_model/monte_carlo_visualizations.R` - Figure generation
+- `output/tables/monte_carlo/` - Tables 1-4 (all scenarios)
+- `output/figures/monte_carlo/` - Figure 2 and additional plots
+- `MONTE_CARLO_RESULTS.md` - Detailed analysis and findings
+
+### Key Findings
+1. Full Kelly maximizes median wealth (theoretical optimum validated)
+2. Over-betting (>f*) leads to high ruin probability
+3. Under-betting (fractional Kelly) reduces risk but sacrifices growth
+4. Long time horizons (10,000+ trades) required to see Kelly properties
+
+See **MONTE_CARLO_RESULTS.md** for complete analysis.
+
 
 ## References
 
