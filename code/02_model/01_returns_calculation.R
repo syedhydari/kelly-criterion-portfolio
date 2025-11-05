@@ -37,7 +37,7 @@ prepare_kelly_data <- function(price_file_path) {
   # print(head(x / dplyr::lag(x) - 1))
 
   
-  # Calculate returns in wide format (MUCH EASIER!)
+  # Calculate returns in wide format
   returns_wide <- prices_wide %>%
     arrange(DATE) %>%
     mutate(across(where(is.numeric), ~ (.x / dplyr::lag(.x) - 1)), .names = "{.col}")

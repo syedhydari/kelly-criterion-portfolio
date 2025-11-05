@@ -49,6 +49,7 @@ returns_check <- returns_analysis %>%
   select(DATE, ticker, return) %>%
   pivot_wider(names_from = ticker, values_from = return)
 
+
 quality_check <- check_data_quality(returns_check)
 
 message(sprintf("\nAnalysis period: %s to %s", START_DATE, END_DATE))

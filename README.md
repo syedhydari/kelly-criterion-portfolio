@@ -137,7 +137,7 @@ A structured checklist for reproducing and extending the methodology, experiment
   - [x] Implement **Kelly Criterion theory**: continuous-time Kelly approximation Function (Anlytical)
   - [x] Implement **Modern Portfolio Theory**: Min-Variance/Markovitz (Anlytical)
   - [x] Implement **Equal Weights Calculation**
-  - [ ] Implement **Tangent Portfolio Opt**
+  - [ ] Implement **Tangent Portfolio Opt** (Bashir)
 - [x] Add **fractional Kelly scaling** parameter (e.g., ½-Kelly, ⅓-Kelly)
 - [ ] Implement **simulation of GBM returns** for synthetic tests
 - [x] Prepare **data ingestion** for EuroStoxx50 historical returns
@@ -147,33 +147,34 @@ A structured checklist for reproducing and extending the methodology, experiment
 
 ### Experiments
 
-- [ ] **Monte-Carlo simulations**
+- [ ] **Monte-Carlo simulations** (Aniqa/Agna)
   - [ ] Simulate 100, 1,000, 10,000, 40,000 trades
   - [ ] Compare Half, Full, Double, and Triple Kelly
   - [ ] Compute mean, median, std, and ruin probabilities
   - [ ] Plot \( E[\log W_T] \) over time
-- [ ] **Single-equity study**
+- [ ] **Single-equity study** (Bashir)
   - [ ] Use daily returns of one stock (e.g., Banca Intesa)
   - [ ] Backtest Full, Double, Triple, Fractional Kelly
-- [ ] **Portfolio experiments**
-  - [ ] Construct in-sample constrained Kelly portfolio (Figure 5)
+- [ ] **Portfolio experiments** 
+  - [ ] Construct in-sample constrained Kelly portfolio (Figure 5) (Bashir)
   - [ ] Compare with tangent, min-variance, and equal-weight portfolios
-  - [ ] Perform **rolling (out-of-sample)** tests with:
+  - [ ] Perform **rolling (out-of-sample)** tests with: (Pranav)
     - [x] 24 lookback windows
     - [ ] Multiple lookback windows (e.g., 24, 36, 60, 108 months)
     - [ ] Multiple rebalancing frequencies (daily, weekly, monthly)
 - [x] Record all metrics in tabular format (mean, median, CAGR, drawdown)
+- [ ] **Sensitivity Analysis** (Bashir/Pranav)
+
 
 ---
 
 ### Results
 
-- [ ] Plot **growth rate vs bet fraction** (G(f)) curve
 - [ ] Visualize **log-wealth distributions** across Kelly multiples
 - [ ] Plot **cumulative returns** for single-asset strategies
 - [ ] Plot **cumulative returns** for In-Sample constrained Kelly
-- [x] Plot **cumulative returns** for Rolling backtest
-- [ ] Draw **efficient frontier** with Kelly, tangent, and benchmark portfolios
+- [x] Plot **cumulative returns** for Rolling backtest 
+- [ ] Draw **efficient frontier** with Kelly, tangent, and benchmark portfolios (Pranav)
 - [ ] Chart **rolling portfolio performance** over time
 - [ ] Summarize all results in tables:
   - [ ] Monte-Carlo statistics
