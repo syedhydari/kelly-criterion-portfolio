@@ -186,7 +186,7 @@ A structured checklist for reproducing and extending the methodology, experiment
 
 ### Extra Credit
 
-- [x] Essay on challenges that thwarted 100% reproducibility (Bashir)
+- [x] Essay on challenges thwarting full reproducibility (Bashir)
 
 ## Repository Structure
 
