@@ -182,7 +182,7 @@ A structured checklist for reproducing and extending the methodology, experiment
   - [ ] Portfolio concentration effects
   - [ ] Impact of window length and rebalancing frequency
 
-### Out-of-Sample Test (Bashir)
+### Out-of-Sample Test
   - [ ] Dow Jones / Few ETF Extension (Bashir)
 
 ---
