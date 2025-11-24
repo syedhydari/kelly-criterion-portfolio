@@ -49,7 +49,7 @@ prepare_kelly_data <- function(price_file_path) {
   returns_wide <- returns_wide %>% select(-.names)
 
 
-  #print(returns_wide)
+  print(returns_wide)
   
   message(sprintf("Calculated returns: %d periods", nrow(returns_wide)))
   
@@ -59,8 +59,8 @@ prepare_kelly_data <- function(price_file_path) {
       cols = -DATE,
       names_to = "ticker",
       values_to = "return"
-    ) %>%
-    filter(!is.na(return), !is.infinite(return))
+    ) #%>%
+    #filter(!is.na(return), !is.infinite(return))
 
   print(returns_long)
 
@@ -70,8 +70,8 @@ prepare_kelly_data <- function(price_file_path) {
       cols = -DATE,
       names_to = "ticker", 
       values_to = "price"
-    ) %>%
-    filter(!is.na(price), price > 0)
+    ) #%>%
+    #filter(!is.na(price), price > 0)
   
   # Add log returns to returns_long
   # returns_long <- returns_long %>%

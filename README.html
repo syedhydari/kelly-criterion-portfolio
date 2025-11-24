@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>readme</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="README_files/libs/clipboard/clipboard.min.js"></script>
+<script src="README_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="README_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="README_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="README_files/libs/quarto-html/popper.min.js"></script>
+<script src="README_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="README_files/libs/quarto-html/anchor.min.js"></script>
+<link href="README_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="README_files/libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="README_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="README_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="README_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="kelly-criterion-portfolio" class="level1">
+<h1>kelly-criterion-portfolio</h1>
+<p>Replication of Carta &amp; Conversano (2020) Kelly Criterion study # Kelly Criterion Portfolio Optimization</p>
+<p>Replication and extension of Carta &amp; Conversano (2020): “Practical Implementation of the Kelly Criterion: Optimal Growth Rate, Number of Trades, and Rebalancing Frequency for Equity Portfolios”</p>
+<section id="team-members" class="level2">
+<h2 class="anchored" data-anchor-id="team-members">Team Members</h2>
+<p>Aniqa Nayim, Agna Chan, Pranav Kasibhatla, Syed Bashir Hydari</p>
+</section>
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
+<p>This project replicates the empirical study by Carta &amp; Conversano (2020) that tests the Kelly Criterion for portfolio optimization using Euro Stoxx 50 data (2007-2018). We compare Kelly portfolios with traditional mean-variance portfolios across different:</p>
+<ul>
+<li><strong>Rebalancing frequencies:</strong> daily, weekly, monthly, quarterly</li>
+<li><strong>Portfolio sizes:</strong> 5, 10, 15, 20 stocks</li>
+<li><strong>Performance metrics:</strong> CAGR, Sharpe ratio, Max Drawdown, VaR₉₉, ES₉₉</li>
+</ul>
+<section id="extensions" class="level3">
+<h3 class="anchored" data-anchor-id="extensions">Extensions</h3>
+<p>We extend the original paper by implementing regime-dependent Kelly fractions using Kim’s (2024) Kelly Criterion Extension (KCE) to add dynamic market condition awareness.</p>
+</section>
+</section>
+<section id="project-structure" class="level2">
+<h2 class="anchored" data-anchor-id="project-structure">Project Structure</h2>
+<pre><code>kelly-criterion-portfolio/
+├── data/
+│   ├── raw/              # Original downloaded data
+│   └── processed/        # Cleaned data ready for analysis
+├── code/
+│   ├── 00_setup/         # Installation and configuration
+│   ├── 01_data/          # Data collection scripts
+│   ├── 02_optimization/  # Portfolio optimization
+│   ├── 03_analysis/      # Performance analysis
+│   └── 04_visualization/ # Plotting functions
+├── output/
+│   ├── figures/          # Generated plots
+│   ├── tables/           # Results tables
+│   └── reports/          # Final documents
+└── docs/                 # Documentation and reports</code></pre>
+</section>
+<section id="setup-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="setup-instructions">Setup Instructions</h2>
+<section id="prerequisites" class="level3">
+<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
+<ul>
+<li>R (version 4.0 or higher)</li>
+<li>RStudio or Positron</li>
+<li>Git</li>
+</ul>
+</section>
+<section id="clone-repository" class="level3">
+<h3 class="anchored" data-anchor-id="clone-repository">1. Clone Repository</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/your-username/kelly-criterion-portfolio.git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> kelly-criterion-portfolio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="install-required-r-packages" class="level3">
+<h3 class="anchored" data-anchor-id="install-required-r-packages">2. Install Required R Packages</h3>
+<p>Open R or Positron and run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"code/00_setup/install_packages.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This will install all required packages including: - <code>quantmod</code> - Financial data download - <code>tidyverse</code> - Data manipulation - <code>xts</code>, <code>zoo</code> - Time series - <code>quadprog</code> - Quadratic programming for Kelly optimization - <code>PerformanceAnalytics</code> - Portfolio metrics</p>
+</section>
+<section id="download-data" class="level3">
+<h3 class="anchored" data-anchor-id="download-data">3. Download Data</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"code/01_data/01_download_data.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This downloads Euro Stoxx 50 daily prices from Yahoo Finance (2005-2018).</p>
+</section>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<section id="source" class="level3">
+<h3 class="anchored" data-anchor-id="source">Source</h3>
+<ul>
+<li><strong>Index:</strong> Euro Stoxx 50</li>
+<li><strong>Provider:</strong> Yahoo Finance (via quantmod)</li>
+<li><strong>Period:</strong> January 2007 - December 2018 (with 2005-2006 buffer for rolling estimation)</li>
+<li><strong>Frequency:</strong> Daily adjusted close prices</li>
+</ul>
+</section>
+<section id="tickers" class="level3">
+<h3 class="anchored" data-anchor-id="tickers">Tickers</h3>
+<p>Approximately 35 major constituents including: - <strong>Germany:</strong> SAP, Siemens, Allianz, BASF, Daimler - <strong>France:</strong> LVMH, L’Oréal, TotalEnergies, BNP Paribas, Airbus - <strong>Netherlands:</strong> ASML, Philips, ING Group - <strong>Spain:</strong> Santander, BBVA, Iberdrola, Inditex - <strong>Italy:</strong> ENI, Intesa Sanpaolo, Enel</p>
+<p>See <code>data/raw/stoxx50_tickers.csv</code> for complete list.</p>
+</section>
+</section>
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
+<section id="kelly-criterion" class="level3">
+<h3 class="anchored" data-anchor-id="kelly-criterion">Kelly Criterion</h3>
+<p>The Kelly Criterion maximizes the expected logarithmic growth rate of wealth:</p>
+<pre><code>maximize: μ'w - (1/2)w'Σw
+subject to: Σw = 1, w ≥ 0</code></pre>
+<p>Where: - <code>w</code> = portfolio weights - <code>μ</code> = expected returns - <code>Σ</code> = covariance matrix</p>
+</section>
+<section id="estimation" class="level3">
+<h3 class="anchored" data-anchor-id="estimation">Estimation</h3>
+<ul>
+<li><strong>Rolling window:</strong> 24 months (≈504 trading days)</li>
+<li><strong>Rebalancing:</strong> Monthly</li>
+<li><strong>Constraints:</strong> Long-only, no leverage (weights sum to 1)</li>
+</ul>
+</section>
+<section id="performance-metrics" class="level3">
+<h3 class="anchored" data-anchor-id="performance-metrics">Performance Metrics</h3>
+<ul>
+<li><strong>CAGR:</strong> Compound Annual Growth Rate</li>
+<li><strong>Sharpe Ratio:</strong> Risk-adjusted returns</li>
+<li><strong>Max Drawdown:</strong> Largest peak-to-trough decline</li>
+<li><strong>VaR₉₉:</strong> Value at Risk (99% confidence)</li>
+<li><strong>ES₉₉:</strong> Expected Shortfall (99% confidence)</li>
+</ul>
+</section>
+</section>
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Dates</th>
+<th>Milestone</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Oct 28 - Nov 3</td>
+<td>Data Collection &amp; Cleaning</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Nov 4 - Nov 10</td>
+<td>Model Setup (Kelly &amp; Mean-Variance)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Nov 11 - Nov 17</td>
+<td>Run Baseline Replication</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Nov 18 - Nov 24</td>
+<td>Validation &amp; Reconciliation</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Nov 25 - Dec 1</td>
+<td>Develop Extensions</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Dec 2 - Dec 8</td>
+<td>Analysis &amp; Draft Report</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Dec 9 - Dec 15</td>
+<td>Final Submission &amp; Presentation</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="checklist" class="level2">
+<h2 class="anchored" data-anchor-id="checklist">Checklist</h2>
+<p>A structured checklist for reproducing and extending the methodology, experiments, and results described in <em>“Practical Implementation of the Kelly Criterion.”</em></p>
+<hr>
+<section id="methods" class="level3">
+<h3 class="anchored" data-anchor-id="methods">Methods</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Optimization Methods</label>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Implement <strong>Kelly Criterion theory</strong>: continuous-time Kelly approximation Function (Anlytical)</label></li>
+<li><label><input type="checkbox" checked="">Implement <strong>Modern Portfolio Theory</strong>: Min-Variance/Markovitz (Anlytical)</label></li>
+<li><label><input type="checkbox" checked="">Implement <strong>Equal Weights Calculation</strong></label></li>
+<li><label><input type="checkbox">Implement <strong>Tangent Portfolio Opt</strong></label></li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Add <strong>fractional Kelly scaling</strong> parameter (e.g., ½-Kelly, ⅓-Kelly)</label></li>
+<li><label><input type="checkbox">Implement <strong>simulation of GBM returns</strong> for synthetic tests</label></li>
+<li><label><input type="checkbox" checked="">Prepare <strong>data ingestion</strong> for EuroStoxx50 historical returns</label></li>
+<li><label><input type="checkbox" checked="">Compute <strong>risk metrics</strong> (CAGR, volatility, drawdown, Sharpe, Sortino)</label></li>
+</ul>
+<hr>
+</section>
+<section id="experiments" class="level3">
+<h3 class="anchored" data-anchor-id="experiments">Experiments</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Monte-Carlo simulations</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Simulate 100, 1,000, 10,000, 40,000 trades</label></li>
+<li><label><input type="checkbox">Compare Half, Full, Double, and Triple Kelly</label></li>
+<li><label><input type="checkbox">Compute mean, median, std, and ruin probabilities</label></li>
+<li><label><input type="checkbox">Plot ( E[W_T] ) over time</label></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Single-equity study</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Use daily returns of one stock (e.g., Banca Intesa)</label></li>
+<li><label><input type="checkbox">Backtest Full, Double, Triple, Fractional Kelly</label></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Portfolio experiments</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Construct in-sample constrained Kelly portfolio (Figure 5)</label></li>
+<li><label><input type="checkbox">Compare with tangent, min-variance, and equal-weight portfolios</label></li>
+<li><label><input type="checkbox">Perform <strong>rolling (out-of-sample)</strong> tests with:</label>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">24 lookback windows</label></li>
+<li><label><input type="checkbox">Multiple lookback windows (e.g., 24, 36, 60, 108 months)</label></li>
+<li><label><input type="checkbox">Multiple rebalancing frequencies (daily, weekly, monthly)</label></li>
+</ul></li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Record all metrics in tabular format (mean, median, CAGR, drawdown)</label></li>
+</ul>
+<hr>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Plot <strong>growth rate vs bet fraction</strong> (G(f)) curve</label></li>
+<li><label><input type="checkbox">Visualize <strong>log-wealth distributions</strong> across Kelly multiples</label></li>
+<li><label><input type="checkbox">Plot <strong>cumulative returns</strong> for single-asset strategies</label></li>
+<li><label><input type="checkbox">Plot <strong>cumulative returns</strong> for In-Sample constrained Kelly</label></li>
+<li><label><input type="checkbox" checked="">Plot <strong>cumulative returns</strong> for Rolling backtest</label></li>
+<li><label><input type="checkbox">Draw <strong>efficient frontier</strong> with Kelly, tangent, and benchmark portfolios</label></li>
+<li><label><input type="checkbox">Chart <strong>rolling portfolio performance</strong> over time</label></li>
+<li><label><input type="checkbox">Summarize all results in tables:</label>
+<ul class="task-list">
+<li><label><input type="checkbox">Monte-Carlo statistics</label></li>
+<li><label><input type="checkbox">Single-asset performance metrics</label></li>
+<li><label><input type="checkbox">In-sample vs out-of-sample portfolio metrics</label></li>
+<li><label><input type="checkbox">Sensitivity analysis (lookback × rebalancing)</label></li>
+</ul></li>
+<li><label><input type="checkbox">Interpret:</label>
+<ul class="task-list">
+<li><label><input type="checkbox">Kelly asymptotic optimality</label></li>
+<li><label><input type="checkbox">Over-betting risk and ruin probability</label></li>
+<li><label><input type="checkbox">Portfolio concentration effects</label></li>
+<li><label><input type="checkbox">Impact of window length and rebalancing frequency</label></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="extensions-future-work" class="level3">
+<h3 class="anchored" data-anchor-id="extensions-future-work">Extensions &amp; Future Work</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Pending</label></li>
+</ul>
+</section>
+</section>
+<section id="repository-structure" class="level2">
+<h2 class="anchored" data-anchor-id="repository-structure">Repository Structure</h2>
+<section id="code-files" class="level3">
+<h3 class="anchored" data-anchor-id="code-files">Code Files</h3>
+<ul>
+<li><code>00_setup/install_packages.R</code> - Package installation</li>
+<li><code>01_data/01_download_data.R</code> - Download price data</li>
+<li><code>01_data/02_clean_data.R</code> - Data quality checks and cleaning</li>
+<li><code>01_data/03_calculate_returns.R</code> - Compute log returns</li>
+<li><code>02_model/01_returns_calculation.R</code> - Calculate Returns</li>
+<li><code>02_model/02_optimization_functions.R</code> - Optimization Methods</li>
+<li><code>02_model/03_rolling_backtest.R</code> - Rolling Backtest</li>
+<li><code>02_model/04_vizualization.R</code> - Visualization Functions</li>
+<li><code>02_model/main.R</code> - Main file Reproducing Results</li>
+</ul>
+</section>
+<section id="output-files" class="level3">
+<h3 class="anchored" data-anchor-id="output-files">Output Files</h3>
+<ul>
+<li><code>output/figures/</code> - Performance plots, drawdown charts</li>
+<li><code>output/tables/</code> - Summary statistics, performance metrics</li>
+<li><code>output/reports/</code> - Final report and presentation</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Carta, A., &amp; Conversano, C. (2020). Practical Implementation of the Kelly Criterion: Optimal Growth Rate, Number of Trades, and Rebalancing Frequency for Equity Portfolios. <em>Frontiers in Applied Mathematics and Statistics</em>, 6, 577050. https://doi.org/10.3389/fams.2020.577050</p>
+<p>Kim, S. (2024). Kelly Criterion Extension. <em>Mathematics</em>, 12(11), 1725. https://doi.org/10.3390/math12111725</p>
+</section>
+<section id="license" class="level2">
+<h2 class="anchored" data-anchor-id="license">License</h2>
+<p>This project is for academic purposes only.</p>
+</section>
+<section id="contact" class="level2">
+<h2 class="anchored" data-anchor-id="contact">Contact</h2>
+<p>For questions, contact: [cc5314@columbia.edu]</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
