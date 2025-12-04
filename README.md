@@ -133,11 +133,11 @@ A structured checklist for reproducing and extending the methodology, experiment
 
 ### Methods
 
-- [x] Optimization Methods
+- [x] Optimization Methods (Bashir)
   - [x] Implement **Kelly Criterion theory**: continuous-time Kelly approximation Function (Anlytical)
   - [x] Implement **Modern Portfolio Theory**: Min-Variance/Markovitz (Anlytical)
   - [x] Implement **Equal Weights Calculation**
-  - [x] Implement **Tangent Portfolio Opt** (Bashir)
+  - [x] Implement **Tangent Portfolio Opt**
 - [x] Add **fractional Kelly scaling** parameter (e.g., ½-Kelly, ⅓-Kelly)
 - [x] Prepare **data ingestion** for EuroStoxx50 historical returns
 - [x] Compute **risk metrics** (CAGR, volatility, drawdown, Sharpe, Sortino)
