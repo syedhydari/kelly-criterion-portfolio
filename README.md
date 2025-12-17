@@ -6,6 +6,8 @@ A comprehensive study implementing the Kelly Criterion for optimal portfolio all
 
 The Kelly Criterion is a mathematical formula for optimal bet sizing that maximizes long-term geometric growth rate. This project applies the Kelly framework to portfolio optimization, comparing Full Kelly, Half Kelly, and traditional mean-variance strategies across multiple market indices.
 
+Our project serves to reproduce, challenge, and expand on modern research on the Kelly Criterion as it pertains to its implementation across: monte carlo simulation, in sample (IS) back testing, and out of sample (OOS) performance on a variety of portfolios native to Markowitz Frontier.
+
 ## Repository Structure
 
 ```
