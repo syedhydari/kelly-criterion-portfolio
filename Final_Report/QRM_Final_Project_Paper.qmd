@@ -1,16 +1,16 @@
 ---
 title: "Practical Implementation of the Kelly Criterion: A Replication and Extension of Carta & Conversano (2020)"
 author:
-  - name: Aniqa Nayim
-    affiliations:
-      - Columbia University, New York, NY
-  - name: Agna Chan
+  - name: Syed Bashir Hydari
     affiliations:
       - Columbia University, New York, NY
   - name: Pranav Kasibhatla
     affiliations:
       - Columbia University, New York, NY
-  - name: Syed Bashir Hydari
+  - name: Agna Chan
+    affiliations:
+      - Columbia University, New York, NY
+  - name: Aniqa Nayim
     affiliations:
       - Columbia University, New York, NY
 date: "December 2025"
