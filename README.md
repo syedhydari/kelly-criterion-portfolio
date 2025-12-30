@@ -41,6 +41,7 @@ kelly-criterion-portfolio/
 ## Authors
 
 Syed Bashir Hydari | Pranav Kasibhatla | Agna Chan | Aniqa Nayim
+Date: December 19, 2025
 
 ## Acknowledgments
 
